@@ -4,6 +4,7 @@
   "description": "",
   "main": "/src/index.js",
   "scripts": {
+    "dev": "nodemon --inspect ./src/index.js",
     "frontend": "cd frontend && npm start",
     "setup:frontend": "cd frontend && npm install",
     "setup:backend": "npm install",
@@ -15,10 +16,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
     "nodemon": "^2.0.4"
+  
   }
 }
