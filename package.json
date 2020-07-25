@@ -16,15 +16,18 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "build": "cd frontend && npm run build",
     "heroku-postbuild": "npm run build",
-    "install": "npm run setup:frontend"
-
+    "install": "npm run setup:frontend",
+    "start:api": "nodemon ./src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.25"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
