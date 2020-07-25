@@ -38,12 +38,13 @@ async function signIn(request, response) {
       accessToken: null,
       message: "invalid user or password",
     });
-  }
+  }     
+  const secret = process.env.TOKEN_SECRET || "this is a secret phrase"
   const token = jwt.sign(
     {
       id: user.id,
     },
-    "this is a secret phase",
+    secret,
     {
       expiresIn: 86400,
     }
