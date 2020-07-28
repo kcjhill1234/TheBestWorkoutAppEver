@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 async function signUp(request, response) {
   const { firstName, lastName, email, userName, password } = request.body;
-  console.log(request.body)
+  // console.log(request.body)
   const user = new User({
     firstName,
     lastName,
