@@ -1,15 +1,8 @@
 # TheBestWorkoutAppEver
 
-## run "npm install" first
 ## first step
 ```
 npm install
-```
-
-## setup
-to install dependencies run the following command:
-```
-npm run setup
 ```
 ## development
 to start development:
