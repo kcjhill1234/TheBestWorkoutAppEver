@@ -12,7 +12,7 @@ async function signUp(request, response) {
     userName,
     password: bcrypt.hashSync(password, 15),
   });
-  const saveUser = await user.save().catch((err) => {
+  await user.save().catch((err) => {
     response.status(500).send({
       message: err,
     });
