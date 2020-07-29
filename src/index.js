@@ -19,6 +19,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/exerciseApp", {
     useUnifiedTopology: true,
 });
 
+app.get("*",function(req, res) {
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
 
 const server = app.listen(PORT, () => {
     console.log(`API server now listening on port ${PORT}`)
