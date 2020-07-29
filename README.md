@@ -1,6 +1,6 @@
 # TheBestWorkoutAppEver
 
-## first step
+## first step, after clone to local
 ```
 npm install
 ```
