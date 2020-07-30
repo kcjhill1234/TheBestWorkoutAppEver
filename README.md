@@ -1,16 +1,19 @@
 # TheBestWorkoutAppEver
 
-## setup
-to install dependencies run the following command:
+## first step, after clone to local
 ```
-npm run setup
+npm install
 ```
 ## development
 to start development:
 ```
 npm start
 ```
-command runs index.js, we are using nodemon with this command, also added inspect tool for chrome://inspect
+
+## testing 
+to run tests
 ```
-npm run dev
+npm test
 ```
+
+[Deployed Heroku link](https://the-best-workout-app-ever.herokuapp.com/)
