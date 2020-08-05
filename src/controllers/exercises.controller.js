@@ -19,7 +19,7 @@ const getAllByFilter = async (req, res) => {
     const exercises = await Exercise.find(query)
         .populate("equipment")
         .populate("muscles")
-        .populate("muscleSecondary")
+        .populate("musclesSecondary")
         .populate("category").catch(error => res.status(500).send({ message: error }))
 
     const mappedExercises = exercises.map(async ({
@@ -51,7 +51,7 @@ const getById = async (req, res) => {
     const exercise = await Exercise.findById(id)
         .populate("equipment")
         .populate("muscles")
-        .populate("muscleSecondary")
+        .populate("musclesSecondary")
         .populate("category").catch(error => res.status(500).send({ message: error }))
 
     if (!exercise) {

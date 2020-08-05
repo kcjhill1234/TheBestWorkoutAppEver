@@ -1,17 +1,30 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.app-form{
+.auth-form {
   width: 500px;
-  margin: 25px auto ;
+}
+.app {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+}
+.ExerciseDetail-images{
+display: flex;
+margin-top: 25px;
+justify-content: space-evenly;
+}
+.ExerciseDetail-breadCrumb{
+  margin: 25px 0;
+  
 }
