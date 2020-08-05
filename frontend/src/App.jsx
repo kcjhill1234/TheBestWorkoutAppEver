@@ -24,7 +24,12 @@ function App() {
   const AuthExerciseDetail = AuthGuard(ExerciseDetail);
 
   return (
-    <>
+    <div style={{
+      backgroundImage: `url('/assets/fitness.jpg')`,
+      backgroundSize: 'cover',
+      overflow: 'scroll',
+      height: '100vh'
+    }}>
       <Navbar user={user} logout={logout} />
       <div className="app">
         <Switch>
@@ -50,7 +55,7 @@ function App() {
         </Switch>
       </div>
       <ToastContainer newestOnTop={true} />
-    </>
+    </div>
   );
 }
 

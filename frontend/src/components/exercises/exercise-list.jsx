@@ -1,8 +1,8 @@
 import React from "react";
-import { List, Loader, Image } from "semantic-ui-react";
+import { List, Image } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
-export default function ExerciseList({ loading, exercises }) {
+export default function ExerciseList({ exercises }) {
   const history = useHistory();
   function onItemClick(_, { id }) {
     history.push("/exercises/" + id);
@@ -20,9 +20,7 @@ export default function ExerciseList({ loading, exercises }) {
       </List.Item>
     );
   });
-  return loading ? (
-    <Loader active />
-  ) : exercises.length > 0 ? (
+  return exercises.length > 0 ? (
     <>
       <List size="huge" selection>
         {listItems}

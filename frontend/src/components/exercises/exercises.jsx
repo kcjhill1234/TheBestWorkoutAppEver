@@ -3,6 +3,7 @@ import ExerciseFilter from "./exercise-filter";
 import { useEffect } from "react";
 import exerciseService from "../../services/exercise.service";
 import ExerciseList from "./exercise-list";
+import { Segment } from "semantic-ui-react";
 
 export default function Exercises() {
   const [filter, setFilter] = useState({});
@@ -25,11 +26,11 @@ export default function Exercises() {
   }, [filter]);
   console.log(exercises);
   return (
-    <div>
+    <Segment loading={loading}>
       <h1>Exercises Component</h1>
 
       <ExerciseFilter setFilter={setFilter} defaultValues={defaultFilter} />
-      <ExerciseList loading={loading} exercises={exercises} />
-    </div>
+      <ExerciseList  exercises={exercises} />
+    </Segment>
   );
 }

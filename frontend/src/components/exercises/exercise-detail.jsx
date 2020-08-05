@@ -3,12 +3,11 @@ import { useParams, useHistory, NavLink } from "react-router-dom";
 import exerciseService from "../../services/exercise.service";
 import messageService from "../../services/message.service";
 import {
-  Loader,
   Header,
   Breadcrumb,
   Grid,
-  Container,
   Image,
+  Segment,
 } from "semantic-ui-react";
 
 export default function ExerciseDetail() {
@@ -31,10 +30,8 @@ export default function ExerciseDetail() {
       });
   }, [history, id]);
   console.log(exercise)
-  return loading ? (
-    <Loader active />
-  ) : (
-    <Container>
+  return (
+    <Segment loading={loading} padded className="exerciseDetail" >
       <Header>{exercise.name}</Header>
       <div className="ExerciseDetail-breadCrumb">
         <Breadcrumb>
@@ -97,6 +94,6 @@ export default function ExerciseDetail() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </Container>
+    </Segment>
   );
 }

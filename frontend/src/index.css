@@ -16,7 +16,7 @@ code {
 }
 .app {
   display: flex;
-  margin-top: 50px;
+  margin-top: 75px;
   justify-content: center;
 }
 .ExerciseDetail-images{
@@ -27,4 +27,7 @@ justify-content: space-evenly;
 .ExerciseDetail-breadCrumb{
   margin: 25px 0;
   
+}
+.segment.home, .segment.workout, .segment.addWorkout{
+width: 900px;
 }
