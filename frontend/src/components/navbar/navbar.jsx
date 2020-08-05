@@ -3,7 +3,7 @@ import { Menu, Button } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 export default function Navbar({ user, logout }) {
   return (
-    <Menu>
+    <Menu stackable fixed="top">
       <Menu.Item header>TheBestWorkoutAppEver</Menu.Item>
       <Menu.Item as={NavLink} to="/" name="home" exact/>
       {user && (
