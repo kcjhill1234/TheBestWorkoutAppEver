@@ -1,4 +1,5 @@
 import React from "react"
+import { Button, Container } from 'semantic-ui-react'
 // import { text } from "express"
 
 class Home extends React.Component {
@@ -19,7 +20,7 @@ class Home extends React.Component {
 
     }
     render() {
-        return (<div className="container">
+        return (<Container className="">
 
             <img className="hero-image" src="/assets/fitness.jpg" alt="" />
 
@@ -31,9 +32,10 @@ class Home extends React.Component {
 
             <h2>Inspiration</h2>
             <p>{this.quotes[this.state.quoteIndex]}</p> 
-            <button className= "btn btn-dark" onClick={this.onButtonClick}>
-                Next</button>
-        </div>
+                <Button basic color='black' onClick={this.onButtonClick}>
+           Next
+              </Button>
+        </Container>
         )
 
     }
