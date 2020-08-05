@@ -28,6 +28,9 @@ justify-content: space-evenly;
   margin: 25px 0;
   
 }
-.segment.home, .segment.workout, .segment.addWorkout{
+.segment.home, .segment.workouts, .segment.addWorkout{
 width: 900px;
+}
+.segment{
+  max-width: 900px;
 }
