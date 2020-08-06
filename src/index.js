@@ -2,8 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const routes = require("./routes");
+const Seed = require("./models/seed")
 const PORT = process.env.PORT || 3002 
 const app = express() 
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,6 +18,18 @@ app.use(routes)
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/exerciseApp", {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
+}, async error => {
+    if (error) {
+        console.log("issue connection to database", error)
+        return 
+    }
+    if (process.env.SEED === "store") {
+        await Seed.store()
+    }
+    if (process.env.SEED === "remove") {
+        await Seed.remove()
+    }
+    
 });
 
 app.get("*",function(req, res) {
