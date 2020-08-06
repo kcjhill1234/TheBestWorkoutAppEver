@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const workoutSchema = new Schema({
-    userId: 
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
     name: { type: String, required: true },
     exercises: [{
         id: Number,
