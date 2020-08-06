@@ -24,7 +24,6 @@ export default function Exercises() {
     };
     getExercises(filter);
   }, [filter]);
-  console.log(exercises);
   return (
     <Segment loading={loading}>
       <h1>Exercises Component</h1>

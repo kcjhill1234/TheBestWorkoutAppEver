@@ -32,13 +32,19 @@ async function signIn(request, response) {
     });
     return;
   });
+  if (!user) {
+    return response.status(401).send({
+      accessToken: null,
+      message: "invalid user or password",
+    });
+  }
   const passwordIsValid = bcrypt.compareSync(password, user.password);
   if (!passwordIsValid || !user) {
     return response.status(401).send({
       accessToken: null,
       message: "invalid user or password",
     });
-  }     
+  }
   const secret = process.env.TOKEN_SECRET || "this is a secret phrase"
   const token = jwt.sign(
     {
@@ -58,4 +64,4 @@ async function signIn(request, response) {
     accessToken: token,
   });
 }
-module.exports = {signIn, signUp}
+module.exports = { signIn, signUp }

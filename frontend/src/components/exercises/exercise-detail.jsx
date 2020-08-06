@@ -29,7 +29,6 @@ export default function ExerciseDetail() {
         history.push("/exercise");
       });
   }, [history, id]);
-  console.log(exercise)
   return (
     <Segment loading={loading} padded className="exerciseDetail" >
       <Header>{exercise.name}</Header>
