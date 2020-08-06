@@ -34,3 +34,11 @@ width: 900px;
 .segment{
   max-width: 900px;
 }
+
+.hero-image {
+ width: 100%;
+ height: 300px;
+ object-position: center;
+ object-fit: cover;
+}
+
