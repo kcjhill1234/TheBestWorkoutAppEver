@@ -7,8 +7,9 @@
     "node": "12.x"
   },
   "scripts": {
+    "dev": "nodemon --inspect ./src/index.js",
     "frontend": "cd frontend && npm start",
-    "start:dev": "concurrently \"nodemon ./src/index.js\" \"npm run frontend\"",
+    "start:dev": "concurrently \"nodemon --inspect ./src/index.js\" \"npm run frontend\"",
     "start:prod": "node src/index.js",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "build": "cd frontend && npm run build",
