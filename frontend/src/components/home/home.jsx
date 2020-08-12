@@ -10,9 +10,9 @@ class Home extends React.Component {
       "“There are far, far better things ahead than any we leave behind.”– CS Lewis",
       "Of course it’s hard. It’s supposed to be hard. If it were easy, everybody would do it. Hard is what makes it great.",
       "Your body can stand almost anything. It’s your mind that you have to convince.",
-      '“Well done is better than well said.”- Benjamin Franklin',
+      "“Well done is better than well said.”- Benjamin Franklin",
       '"If you want something you’ve never had, you must be willing to do something you’ve never done."- Thomas Jefferson',
-      '"I have nothing in common with lazy people who blame others for their lack of success. Great things come from hard work and perseverance. No excuses." - Kobe Bryant'
+      '"I have nothing in common with lazy people who blame others for their lack of success. Great things come from hard work and perseverance. No excuses." - Kobe Bryant',
     ];
     this.state = { quote: "" };
   }
@@ -22,8 +22,8 @@ class Home extends React.Component {
     }, 3000);
   };
   componentWillUnmount = () => {
-    clearInterval(this.interval)
-  }
+    clearInterval(this.interval);
+  };
 
   getRandomQuote = (array) => {
     return array[Math.ceil(Math.random() * array.length - 1)];
