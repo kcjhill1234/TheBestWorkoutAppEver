@@ -28,19 +28,13 @@ justify-content: space-evenly;
   margin: 25px 0;
   
 }
-.segment.home, .segment.workouts, .segment.addWorkout{
+.segment.home, .segment.workouts, .segment.addWorkout, .segment.add-workout, .segment.workout-detail{
 width: 900px;
 }
 .segment{
   max-width: 900px;
 }
 
-.hero-image {
- width: 100%;
- height: 300px;
- object-position: center;
- object-fit: cover;
-}
 @media only screen and (max-width: 767px) {
   .app{
     margin-top: 275px;

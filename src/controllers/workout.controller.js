@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
     const { id } = req.params
-    const workout = await Workout.findById({ id })
+    const workout = await Workout.findById( id )
         .catch(error => res.status(500)
             .send({
                 message: error
@@ -41,7 +41,10 @@ const create = async (req, res) => {
 const update = async (req, res) => {
     const { id } = req.params
     const { name, exercises } = req.body
-    const query = { name }
+    const query = {}
+    if (name) {
+        query.name = name 
+    }
     if (exercises && exercises.length) {
         query.exercises = exercises
     }
