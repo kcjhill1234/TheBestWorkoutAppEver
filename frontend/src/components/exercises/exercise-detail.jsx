@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory, NavLink } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import exerciseService from "../../services/exercise.service";
 import messageService from "../../services/message.service";
-import {
-  Header,
-  Breadcrumb,
-  Grid,
-  Image,
-  Segment,
-} from "semantic-ui-react";
+import { Header, Breadcrumb, Grid, Image, Segment } from "semantic-ui-react";
 
 export default function ExerciseDetail() {
   const [exercise, setExercise] = useState({});
@@ -30,11 +24,11 @@ export default function ExerciseDetail() {
       });
   }, [history, id]);
   return (
-    <Segment loading={loading} padded className="exerciseDetail" >
+    <Segment loading={loading} padded className="exerciseDetail">
       <Header>{exercise.name}</Header>
       <div className="ExerciseDetail-breadCrumb">
         <Breadcrumb>
-          <Breadcrumb.Section as={NavLink} to="/exercises">
+          <Breadcrumb.Section as={Link} to="/exercises">
             Exercises
           </Breadcrumb.Section>
           <Breadcrumb.Divider />

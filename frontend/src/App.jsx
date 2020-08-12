@@ -12,25 +12,34 @@ import Exercises from "./components/exercises/exercises";
 import authService from "./services/auth.service";
 import AuthGuard from "./services/auth.guard";
 import ExerciseDetail from "./components/exercises/exercise-detail";
+import AddWorkout from "./components/workouts/add-workout"
+import WorkoutDetail from "./components/workouts/workout-detail"
+
 function App() {
   const [user, setUser] = useState(authService.getCurrentUser());
+
   const history = useHistory();
   const logout = () => {
     setUser(null);
     authService.logout(history);
   };
   const AuthWorkouts = AuthGuard(Workouts);
+  const AuthAddWorkout = AuthGuard(AddWorkout);
   const AuthExercises = AuthGuard(Exercises);
   const AuthExerciseDetail = AuthGuard(ExerciseDetail);
+  const AuthWorkoutDetail = AuthGuard(WorkoutDetail);
 
   return (
-    <div style={{
-      backgroundImage: `url('/assets/fitness.jpg')`,
-      backgroundSize: 'cover',
-      overflow: 'scroll',
-      height: '100vh'
-    }}>
+    <div
+      style={{
+        backgroundImage: `url('/assets/fitness.jpg')`,
+        backgroundSize: "cover",
+        overflow: "scroll",
+        height: "100vh",
+      }}
+    >
       <Navbar user={user} logout={logout} />
+
       <div className="app">
         <Switch>
           <Route exact path="/signUp">
@@ -41,6 +50,12 @@ function App() {
           </Route>
           <Route exact path="/workouts">
             <AuthWorkouts />
+          </Route>
+          <Route exact path="/workouts/new">
+            <AuthAddWorkout />
+          </Route>
+          <Route exact path="/workouts/:id">
+            <AuthWorkoutDetail />
           </Route>
           <Route exact path="/exercises">
             <AuthExercises />
