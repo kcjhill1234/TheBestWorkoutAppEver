@@ -17,15 +17,19 @@ export default function ExerciseFilter({setFilter, defaultValues}) {
     register({name: "equipment"})
     register({name: "muscle"})
     
-    const getOptions = async () => {
       const allOption = [{key: 0, value: 0, text: "All"}]
       setLoading(true)
-      setCategories(allOption.concat(await exerciseService.categories()))
-      setEquipment(allOption.concat(await exerciseService.equipment()))
-      setMuscles(allOption.concat(await exerciseService.muscles()))
-      setLoading(false)
-    }
-    getOptions()
+      Promise.all([
+        exerciseService.categories(),
+        exerciseService.equipment(),
+        exerciseService.muscles()
+      ]).then(([categories, equipment, muscles])=>{
+        setCategories(allOption.concat(categories ))
+        setEquipment(allOption.concat(equipment ))
+        setMuscles(allOption.concat(muscles ))
+      }).finally(() => {
+        setLoading(false)
+      })
 
   }, [register])
 

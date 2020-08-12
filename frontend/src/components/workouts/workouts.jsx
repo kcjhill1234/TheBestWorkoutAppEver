@@ -19,7 +19,7 @@ export default function Workouts() {
       })
       .catch((error) => {
         setLoading(false);
-        messageService.error("can not load workout");
+        messageService.error(error?.response?.data?.message ||"can not load workout");
       });
   }, []);
 
