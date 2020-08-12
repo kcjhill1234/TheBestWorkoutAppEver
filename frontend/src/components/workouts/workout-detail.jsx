@@ -12,19 +12,17 @@ import {
   Label,
 } from "semantic-ui-react";
 import { useParams, useHistory, Link } from "react-router-dom";
-import workoutService from "../../services/workouts.service";
-import messageService from "../../services/message.service";
-import exerciseService from "../../services/exercise.service";
 import { useForm, useFieldArray } from "react-hook-form";
 import WorkoutSets from "./workout-sets";
+import { useService } from "../../services/use-service";
 
 const inlineStyle = {
-  modal : {
-    marginTop: '0 !important',
-    maxHeight: '150px',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  }
+  modal: {
+    marginTop: "0 !important",
+    maxHeight: "150px",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
 };
 
 export default function WorkoutDetail() {
@@ -36,6 +34,7 @@ export default function WorkoutDetail() {
   const [searchResults, setSearchResults] = useState([]);
   const history = useHistory();
   const { control, register, handleSubmit, reset, errors } = useForm();
+  const { workoutService, exerciseService, messageService } = useService();
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -44,15 +43,12 @@ export default function WorkoutDetail() {
   });
 
   const OnSubmit = ({ exercises }) => {
-    setLoading((prev) => ({ ...prev, component: true }));
     workoutService
       .update({ id, exercises })
       .then(() => {
-        setLoading((prev) => ({ ...prev, component: false }));
         messageService.success("Workout updated!");
       })
       .catch((error) => {
-        setLoading((prev) => ({ ...prev, component: false }));
         messageService.error("Something went wrong");
       });
   };
@@ -70,7 +66,7 @@ export default function WorkoutDetail() {
         messageService.error("sorry that workout does not exist");
         history.push("/");
       });
-  }, [history, id, reset]);
+  }, [history, id, reset, workoutService, messageService]);
   // alert(JSON.stringify(workout, null, 2));
 
   const handleSearchChange = (e, { value }) => {
@@ -191,7 +187,7 @@ export default function WorkoutDetail() {
         onCancel={closeConfirm}
         onConfirm={onConfirm}
         style={inlineStyle.modal}
-        className='scrolling'
+        className="scrolling"
       />
     </Segment>
   );

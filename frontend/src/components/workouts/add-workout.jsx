@@ -6,15 +6,15 @@ import {
 } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import workoutsService from "../../services/workouts.service";
-import messageService from "../../services/message.service";
+import { useService } from "../../services/use-service";
 
 export default function AddWorkout() {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory()
+  const {workoutService, messageService} = useService()
 
   const OnSubmit = data => {
-    workoutsService.create(data.workoutName).then(({_id}) => {
+    workoutService.create(data.workoutName).then(({_id}) => {
       messageService.success("workout created")
       history.push("/workouts/" + _id)
 

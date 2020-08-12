@@ -1,29 +1,27 @@
-import axios from "axios"
-import authService from "./auth.service"
 
-const BASE_URL = "/api/workout/" 
-const axiosClient = axios.create({
-    headers: {
-        "x-access-token": authService.getCurrentUser()?.accessToken || "no token"
+export default class WorkoutService {
+    constructor(axios) {
+        this.axios = axios
+        this.BASE_URL = "/api/workout/"
     }
-})
-const create = (name) => {
-return axiosClient.post(BASE_URL, {name}).then(response => response.data)
-}
 
-const getAll = () => {
-return axiosClient.get(BASE_URL).then(response => response.data)
-}
+    create(name) {
+        return this.axios.post(this.BASE_URL, { name }).then(response => response.data)
+    }
 
-const getById = (id) => {
-    return axiosClient.get(BASE_URL + id).then(response => response.data)
-}
+    getAll() {
+        return this.axios.get(this.BASE_URL).then(response => response.data)
+    }
 
-const remove = (id) => {
-return axiosClient.delete(BASE_URL + id)
-}
+    getById(id) {
+        return this.axios.get(this.BASE_URL + id).then(response => response.data)
+    }
 
-const update = ({id, name, exercises}) => {
-    return axiosClient.put(BASE_URL +id, {name, exercises}).then(response => response.data)
+    remove(id) {
+        return this.axios.delete(this.BASE_URL + id)
+    }
+
+    update({ id, name, exercises }) {
+        return this.axios.put(this.BASE_URL + id, { name, exercises }).then(response => response.data)
+    }
 }
-export default {create, getAll, getById, remove, update}

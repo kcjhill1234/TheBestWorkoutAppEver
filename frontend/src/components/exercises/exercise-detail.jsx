@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
-import exerciseService from "../../services/exercise.service";
-import messageService from "../../services/message.service";
 import { Header, Breadcrumb, Grid, Image, Segment } from "semantic-ui-react";
+import { useService } from "../../services/use-service";
 
 export default function ExerciseDetail() {
   const [exercise, setExercise] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const history = useHistory();
+  const { exerciseService, messageService } = useService();
 
   useEffect(() => {
     setLoading(true);
@@ -22,7 +22,7 @@ export default function ExerciseDetail() {
         messageService.error("sorry exercise does not exist");
         history.push("/exercise");
       });
-  }, [history, id]);
+  }, [history, id, exerciseService, messageService]);
   return (
     <Segment loading={loading} padded className="exerciseDetail">
       <Header>{exercise.name}</Header>

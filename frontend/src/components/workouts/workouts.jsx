@@ -2,16 +2,16 @@ import React from "react";
 import { Segment } from "semantic-ui-react";
 import { useState } from "react";
 import { useEffect } from "react";
-import workoutsService from "../../services/workouts.service";
-import messageService from "../../services/message.service";
 import WorkoutList from "./workouts-list";
+import { useService } from "../../services/use-service";
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const {workoutService, messageService}= useService()
   useEffect(() => {
     setLoading(true);
-    workoutsService
+    workoutService
       .getAll()
       .then((workouts) => {
         setLoading(false);
@@ -21,7 +21,7 @@ export default function Workouts() {
         setLoading(false);
         messageService.error(error?.response?.data?.message ||"can not load workout");
       });
-  }, []);
+  }, [workoutService, messageService]);
 
   return (
     <Segment loading={loading} className="workouts">
